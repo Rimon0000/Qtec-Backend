@@ -42,6 +42,19 @@ const updateTask = async(req: Request, res: Response) =>{
     })
 }
 
+//make status complete
+const makeStatusComplete = async(req: Request, res: Response) =>{
+    const id = req.params.id
+    const result = await taskServices.makeStatusCompleteFromDb(id)
+    res.status(200).json({
+        success: true,
+        statusCode: 200,
+        message: "Status Completed successfully",
+        data: result
+    })
+}
+
+
 //delete
 const deleteTask = async(req: Request, res: Response) =>{
     const id = req.params.id
@@ -59,5 +72,6 @@ export const taskControllers = {
     getAllTask,
     updateTask,
     deleteTask,
-    getSingleTask
+    getSingleTask,
+    makeStatusComplete
 }

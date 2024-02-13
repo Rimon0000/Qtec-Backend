@@ -32,6 +32,12 @@ const deleteTaskFromDb = async (id: string) => {
     return result;
 };
 
+//make status complete
+const makeStatusCompleteFromDb = async(id:string) =>{
+    const result = await Task.findByIdAndUpdate(id, {status: "completed"}, {new: true})
+    return result;
+}
+
 
 export const taskServices = {
     createTaskFromDb,
@@ -39,4 +45,5 @@ export const taskServices = {
     getSingleTaskFromDb,
     updateTaskFromDb,
     deleteTaskFromDb,
+    makeStatusCompleteFromDb
 }
